@@ -7,10 +7,16 @@
  * nesneyiTrimle({ isim: '  jane  ' }) // yeni bir nesne döndürür { name: 'jane' }
  */
 function nesneyiTrimle(obj) {
-  obj.isim = obj.isim.trim();
-  return obj;
+  const trimmedObj = {};
+  for (let prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+      trimmedObj[prop] = obj[prop].trim();
+    }
+  }
+  return trimmedObj;
 }
-// const obj = { isim: "  jane  " };
+
+// const obj = { isim: "  ibrahim  ", soyisim: "kayan  ", yas: "  35 " };
 // console.log(nesneyiTrimle(obj));
 
 /**
@@ -43,13 +49,13 @@ function enBuyukTamsayiyiBul(tamsayilar) {
       enBuyuk = tamsayilar[i].tamsayi;
     }
   }
-  return enBuyuk;
+  return { tamsayi: enBuyuk };
 }
-// const tamsayilar = [{ tamsayi: 1 }, { tamsayi: 3 }, { tamsayi: 2 }];
+// const tamsayilar = [{ tamsayi: 1 }, { tamsayi: 9 }, { tamsayi: 2 }];
 // console.log(enBuyukTamsayiyiBul(tamsayilar));
 
 function Sayici(ilkSayi) {
-  /**
+  /*}*
    * [Görev 4A] Sayici bir sayaç oluşturur
    * @param {number} ilkSayi - Sayacın ilk değeri
    */
@@ -78,11 +84,11 @@ function Sayici(ilkSayi) {
   };
 }
 
-// const sayac = new Sayici(3);
-// console.log(sayac.asagiSay()); // 2
-// console.log(sayac.asagiSay()); // 1
-// console.log(sayac.asagiSay()); // 0
-// console.log(sayac.asagiSay()); // 0
+const sayac = new Sayici(3);
+console.log(sayac.asagiSay()); // 2
+console.log(sayac.asagiSay()); // 1
+console.log(sayac.asagiSay()); // 0
+console.log(sayac.asagiSay()); // 0
 
 function Mevsimler() {
   /**
