@@ -55,40 +55,42 @@ function enBuyukTamsayiyiBul(tamsayilar) {
 // console.log(enBuyukTamsayiyiBul(tamsayilar));
 
 function Sayici(ilkSayi) {
-  /*}*
+  /**
    * [Görev 4A] Sayici bir sayaç oluşturur
-   * @param {number} ilkSayi - Sayacın ilk değeri
+   * @param {number} ilkSayi - Sayacin ilk değeri
    */
 
   // ✨ gerekli propları ekleyin
-  this.ilkSayi = ilkSayi;
+  let globalSayi = ilkSayi;
 
   /**
    * [Görev 4B] asagiSay metodu sıfıra doğru sayar
    * @returns {number} - bir sonraki sayı, sıfırdan küçük olamaz
    *
-   * Örnek:
+   * Örnek
    * const sayac = new Sayici(3)
+   * sayac.asagiSay() // 3 döndürür
    * sayac.asagiSay() // 2 döndürür
    * sayac.asagiSay() // 1 döndürür
    * sayac.asagiSay() // 0 döndürür
    * sayac.asagiSay() // 0 döndürür
    */
   this.asagiSay = () => {
-    let sayi = this.ilkSayi;
-    if (sayi > 0) {
-      sayi--;
-    }
-    this.ilkSayi = sayi;
-    return sayi;
+    // ✨ kodlar buraya
+    /*if(globalSayi<=0)
+        return 0;
+    let response = globalSayi;
+    globalSayi = globalSayi-1
+    return response;*/
+    return ilkSayi <= 0 ? 0 : ilkSayi--;
   };
 }
-
 const sayac = new Sayici(3);
-console.log(sayac.asagiSay()); // 2
-console.log(sayac.asagiSay()); // 1
-console.log(sayac.asagiSay()); // 0
-console.log(sayac.asagiSay()); // 0
+console.log(sayac.asagiSay());
+console.log(sayac.asagiSay());
+console.log(sayac.asagiSay());
+console.log(sayac.asagiSay());
+console.log(sayac.asagiSay());
 
 function Mevsimler() {
   /**

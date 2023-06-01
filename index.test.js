@@ -45,19 +45,26 @@ describe("[Görev 4] Sayici", () => {
     sayici = new utils.Sayici(3); // her test yeni bir sayı ile başlatılıyor
   });
   test("[6] sayici.asagiSay ilk çağırılışında başlangıç sayışını yapıyor", () => {
-    const actual = sayici.asagiSay();
-    expect(actual).toEqual(2);
+    //act
+    let actual = sayici.asagiSay();
+    //assert
+    expect(actual).toBe(3);
   });
   test("[7] sayici.asagiSay İKİNCİ çağırılışında başlangıç eksi 1 sayıyor", () => {
-    const actual = sayici.asagiSay();
-    expect(actual).toEqual(1);
+    //act
+    sayici.asagiSay();
+    let actual = sayici.asagiSay();
+    //assert
+    expect(actual).toBe(2);
   });
   test("[8] sayıcı sonunda sıfıra ulaşır ama daha aşağı saymaz", () => {
-    const actual = sayici.asagiSay();
-    sayici.asagiSay();
-    sayici.asagiSay();
-    sayici.asagiSay();
-    expect(actual).toEqual(0);
+    //act
+    for (let i = 0; i < 999; i++) {
+      sayici.asagiSay();
+    }
+    let actual = sayici.asagiSay();
+    //assert
+    expect(actual).toBe(0);
   });
 });
 
@@ -71,23 +78,33 @@ describe("[Görev 5] Mevsimler", () => {
     expect(actual).toEqual("yaz");
   });
   test('[10] mevsimler.sonraki İKİNCİ çağırılışında "sonbahar" döndürüyor', () => {
+    mevsimler.sonraki();
     const actual = mevsimler.sonraki();
     expect(actual).toEqual("sonbahar");
   });
   test('[11] mevsimler.sonraki ÜÇÜNCÜ çağırılışında "kış" döndürüyor', () => {
+    mevsimler.sonraki();
+    mevsimler.sonraki();
     const actual = mevsimler.sonraki();
     expect(actual).toEqual("kış");
   });
   test('[12] mevsimler.sonraki DÖRDÜNCÜ çağırılışında "ilkbahar" döndürüyor', () => {
+    mevsimler.sonraki();
+    mevsimler.sonraki();
+    mevsimler.sonraki();
     const actual = mevsimler.sonraki();
     expect(actual).toEqual("ilkbahar");
   });
   test('[13] mevsimler.sonraki BEŞİNCİ çağırılışında "yaz" döndürüyor', () => {
+    mevsimler.sonraki();
+    mevsimler.sonraki();
+    mevsimler.sonraki();
+    mevsimler.sonraki();
     const actual = mevsimler.sonraki();
     expect(actual).toEqual("yaz");
   });
   test('[14] mevsimler.sonraki KIRKINCI çağırılışında "ilkbahar" döndürüyor', () => {
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 39; i++) {
       mevsimler.sonraki();
     }
     const actual = mevsimler.sonraki();
@@ -105,9 +122,11 @@ describe("[Görev 6] Araba", () => {
     expect(actual).toEqual(10);
   });
   test("[16] arabayı sürmek benzin tüketiyor", () => {
-    focus.sur(10);
-    const actual = focus.benzin;
-    expect(actual).toEqual(19);
+    focus.sur(100);
+    focus.sur(100);
+    focus.sur(100);
+
+    expect(focus.depo).toEqual(10);
   });
   test("[17] benzinalma arabayı sürmeye izin veriyor", () => {
     focus.benzinal(10);
@@ -116,9 +135,12 @@ describe("[Görev 6] Araba", () => {
     expect(actual).toEqual(10);
   });
   test("[18] dolu depoya benzin alma etki etmiyor", () => {
-    focus.benzinal(100);
-    const actual = focus.benzin;
-    expect(actual).toEqual(20);
+    focus.sur(600); //600
+    focus.benzinal(50);
+    //act
+    let actual = focus.sur(600);
+    //assert
+    expect(actual).toBe(1200);
   });
 });
 
